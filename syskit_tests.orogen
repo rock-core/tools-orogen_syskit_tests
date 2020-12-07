@@ -1,0 +1,11 @@
+# frozen_string_literal: true
+
+name "orogen_syskit_tests"
+version "0.1"
+
+# An empty component
+task_context "Empty" do
+    needs_configuration
+end
+
+simple_deployment "syskit_tests_empty", "Empty"
