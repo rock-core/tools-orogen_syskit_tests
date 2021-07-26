@@ -1,0 +1,6 @@
+<package>
+  <description brief="oroGen components required by Syskit's own test suite">
+  </description>
+  <author>Sylvain Joyeux/sylvain.joyeux@tidewise.io</author>
+  <license>LGPL v2 or later</license>
+</package>
