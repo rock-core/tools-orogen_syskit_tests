@@ -1,0 +1,59 @@
+# frozen_string_literal: true
+
+name "orogen_syskit_tests"
+version "0.1"
+
+using_library "base-logging"
+
+# An empty component
+task_context "Empty" do
+    needs_configuration
+end
+
+# A component that triggers a fatal error in stopHook
+#
+# This component is used to test the handling of fatal errors
+task_context "FatalError" do
+    needs_configuration
+end
+
+# A component that triggers a fatal error in stopHook after a transition to
+# exception from updateHook, followed by a delay.
+task_context "FatalErrorAfterExceptionAndDelay" do
+    needs_configuration
+end
+
+# A component that triggers a fatal error in stopHook after a transition to
+# exception from updateHook, followed by a delay.
+task_context "BlockingHooks" do
+    needs_configuration
+
+    # The hook in which the component should block
+    #
+    # One of 'configure', 'start', 'update', 'stop', 'cleanup', 'exception'.
+    # The component will transition to exception() automatically if hook
+    # is 'exception'
+    property "hook", "/std/string"
+
+    # How long to block, in seconds
+    property "time", "double", 600
+
+    # Time at which the component started sleeping
+    #
+    # This is mostly meant as a way to synchronize with the sleep start,
+    # which we really need for e.g. update
+    output_port "sleep_start", "/bool"
+end
+
+simple_deployment "syskit_tests_empty", "Empty"
+
+# A deployment with two tasks to test the recovery mechanisms for
+# quarantined/fatal error
+#
+# Deployments with a single task are killed right away when the fatal error
+# happens
+deployment "syskit_fatal_error_recovery_test" do
+    task "a", "FatalError"
+    task "b", "Empty"
+    add_default_logger
+end
