@@ -21,6 +21,9 @@ end
 # exception from updateHook, followed by a delay.
 task_context "FatalErrorAfterExceptionAndDelay" do
     needs_configuration
+
+    property "update_delay_ms", "int", 0
+    property "stop_delay_ms", "int", 1000
 end
 
 # A component that triggers a fatal error in stopHook after a transition to

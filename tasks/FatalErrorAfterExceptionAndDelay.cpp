@@ -33,6 +33,7 @@ bool FatalErrorAfterExceptionAndDelay::startHook()
 }
 void FatalErrorAfterExceptionAndDelay::updateHook()
 {
+    usleep(_update_delay_ms.get() * 1000);
     exception();
     FatalErrorAfterExceptionAndDelayBase::updateHook();
 }
@@ -42,7 +43,7 @@ void FatalErrorAfterExceptionAndDelay::errorHook()
 }
 void FatalErrorAfterExceptionAndDelay::stopHook()
 {
-    usleep(1000000UL);
+    usleep(_stop_delay_ms.get() * 1000);
     throw std::runtime_error("please transition to FATAL");
     FatalErrorAfterExceptionAndDelayBase::stopHook();
 }
