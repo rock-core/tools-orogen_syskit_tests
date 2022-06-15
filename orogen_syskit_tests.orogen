@@ -60,3 +60,9 @@ deployment "syskit_fatal_error_recovery_test" do
     task "b", "Empty"
     add_default_logger
 end
+
+deployment "syskit_test_nonstandard_logger_name" do
+    do_not_install
+    task "a", "Empty"
+    task "nonstandard_logger_name", "logger::Logger"
+end
