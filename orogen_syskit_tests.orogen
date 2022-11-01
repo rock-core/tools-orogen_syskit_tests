@@ -48,6 +48,23 @@ task_context "BlockingHooks" do
     output_port "sleep_start", "/bool"
 end
 
+# A component that triggers a fatal error in stopHook after a transition to
+# exception from updateHook, followed by a delay.
+task_context "CustomStates" do
+    needs_configuration
+
+    # Which state should be emitted
+    #
+    # 0 is runtime, 1 error and 2 exception
+    property "level", "int", 0
+
+    runtime_states :CUSTOM_RUNTIME
+    error_states :CUSTOM_ERROR
+    exception_states :CUSTOM_EXCEPTION
+
+    periodic 0.1
+end
+
 simple_deployment "syskit_tests_empty", "Empty"
 
 # A deployment with two tasks to test the recovery mechanisms for
