@@ -41,7 +41,13 @@ void FatalError::errorHook()
 }
 void FatalError::stopHook()
 {
-    throw std::runtime_error("please transition to FATAL");
+    if (_stop_return_delay_after_fatal_ms.get()) {
+        fatal();
+        usleep(_stop_return_delay_after_fatal_ms.get() * 1000);
+    }
+    else {
+        throw std::runtime_error("please transition to FATAL");
+    }
     FatalErrorBase::stopHook();
 }
 void FatalError::cleanupHook()
