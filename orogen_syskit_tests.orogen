@@ -10,6 +10,27 @@ task_context "Empty" do
     needs_configuration
 end
 
+# A component that repeats what it receives as input
+task_context "TriggeredEcho" do
+    needs_configuration
+
+    input_port "in", "/int"
+    output_port "out", "/int"
+
+    port_driven
+end
+
+# A component that repeats what it receives as input
+task_context "PeriodicEcho" do
+    needs_configuration
+
+    input_port "in", "/int"
+    output_port "out", "/int"
+
+    port_driven :in
+    periodic 0.1
+end
+
 # A component that triggers a fatal error in stopHook
 #
 # This component is used to test the handling of fatal errors
