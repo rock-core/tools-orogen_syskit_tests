@@ -27,7 +27,11 @@ task_context "PeriodicEcho" do
     input_port "in", "/int"
     output_port "out", "/int"
 
+    # Declare port driven even if it is periodic by default, so that we can test
+    # overriding the activity to 'triggered' within Syskit's tests. port_driven
+    # cannot be overriden (it's part of the task context class itself)
     port_driven :in
+
     periodic 0.1
 end
 
