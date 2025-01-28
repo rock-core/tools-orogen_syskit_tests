@@ -5,6 +5,7 @@ version "0.1"
 
 using_library "base-logging"
 
+import_types_from "base"
 import_types_from "orogen_syskit_testsTypes.hpp"
 typekit.export_types "/orogen_syskit_tests/TestType"
 

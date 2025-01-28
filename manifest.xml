@@ -3,4 +3,5 @@
   </description>
   <author>Sylvain Joyeux/sylvain.joyeux@tidewise.io</author>
   <license>LGPL v2 or later</license>
+  <depend package="base/types" />
 </package>
