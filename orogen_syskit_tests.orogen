@@ -13,6 +13,16 @@ task_context "Empty" do
     needs_configuration
 end
 
+task_context "StaticTestType" do
+    needs_configuration
+
+    property "test_value", "int", 0
+
+    output_port "out", "/orogen_syskit_tests/TestType"
+
+    periodic 0.1
+end
+
 # A component that repeats what it receives as input
 task_context "TriggeredEcho" do
     needs_configuration
