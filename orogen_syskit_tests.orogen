@@ -14,10 +14,10 @@ task_context "Empty" do
     needs_configuration
 end
 
-task_context "StaticTestType" do
+task_context "LogicalTimeLoggingTest" do
     needs_configuration
 
-    property "test_value", "int", 0
+    property "test_type_timestamp", "/base/Time"
 
     output_port "out", "/orogen_syskit_tests/TestType"
 

@@ -7,7 +7,6 @@ namespace orogen_syskit_tests {
     struct TestType {
         /** @meta role logical_time */
         base::Time timestamp;
-        int test_value = 0;
     };
 }
 
