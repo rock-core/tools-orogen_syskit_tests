@@ -5,9 +5,23 @@ version "0.1"
 
 using_library "base-logging"
 
+import_types_from "base"
+import_types_from "orogen_syskit_testsTypes.hpp"
+typekit.export_types "/orogen_syskit_tests/TestType"
+
 # An empty component
 task_context "Empty" do
     needs_configuration
+end
+
+task_context "LogicalTimeLoggingTest" do
+    needs_configuration
+
+    property "test_type_timestamp", "/base/Time"
+
+    output_port "out", "/orogen_syskit_tests/TestType"
+
+    periodic 0.1
 end
 
 # A component that repeats what it receives as input
