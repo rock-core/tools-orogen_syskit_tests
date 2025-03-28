@@ -55,7 +55,7 @@ void BlockingHooks::stopHook()
 void BlockingHooks::exceptionHook()
 {
     doRequiredSleep("exception");
-    BlockingHooksBase::cleanupHook();
+    BlockingHooksBase::exceptionHook();
 }
 void BlockingHooks::cleanupHook()
 {
