@@ -67,6 +67,13 @@ task_context "FatalErrorAfterExceptionAndDelay" do
     property "stop_delay_ms", "int", 1000
 end
 
+# A component that goes into exception from the stopHook
+task_context "ExceptionFromStopHook" do
+    needs_configuration
+
+    exception_states "CUSTOM_EXCEPTION"
+end
+
 # A component that triggers a fatal error in stopHook after a transition to
 # exception from updateHook, followed by a delay.
 task_context "BlockingHooks" do
